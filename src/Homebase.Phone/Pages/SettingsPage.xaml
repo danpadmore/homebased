@@ -1,0 +1,104 @@
+﻿<pages:PageBase
+    x:Class="Homebase.Phone.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Homebase"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:Homebase.Phone.Pages"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Settings}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="HOMEBASED" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="settings" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <ProgressBar IsIndeterminate="True" Visibility="{Binding CanExecute, Converter={StaticResource InvertBoolToVisibility}}"></ProgressBar>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel HorizontalAlignment="Stretch" Margin="0,0,0,9.5">
+                <TextBlock
+                                    Text="Use your location to trigger tasks"
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemContentTextBlockStyle}"
+                                    Foreground="Gray"
+                                    Margin="0,0,19,-8"/>
+                <ToggleSwitch 
+                                    IsOn="{Binding IsEnabled, Mode=TwoWay}"
+                                    IsEnabled="{Binding CanExecute}"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Margin="0,0,19,0"></ToggleSwitch>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Stretch" Margin="0,0,0,9.5">
+                <TextBlock          Visibility="{Binding IsHomeLocationSet, Converter={StaticResource InvertBoolToVisibility}}"
+                                    Text="You must set your home location so we know which tasks to perform when."
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemContentTextBlockStyle}"
+                                    Margin="0,0,19,19"/>
+                <TextBlock
+                                    Text="Set your current location as home"
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemContentTextBlockStyle}"
+                                    Foreground="Gray"
+                                    Margin="0,0,19,0"/>
+                <Button Margin="0,0,19,0"
+                                    Click="SetHome"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True">set home</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Stretch" Margin="0,0,0,9.5">
+                <TextBlock          Visibility="{Binding HasAnyTaskService, Converter={StaticResource InvertBoolToVisibility}}"
+                                    Text="You must connect to the Internet of Things before you can choose tasks."
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemContentTextBlockStyle}"
+                                    Margin="0,0,19,19"/>
+                <TextBlock
+                                    Text="Connect services that can perform tasks"
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemContentTextBlockStyle}"
+                                    Foreground="Gray"
+                                    Margin="0,0,19,0"/>
+                <Button Margin="0,0,19,0"
+                                    Click="ConnectServices"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True">connect services</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</pages:PageBase>

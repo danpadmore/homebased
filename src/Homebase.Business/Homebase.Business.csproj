@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4FFC70C5-DBF0-48DF-B8EF-2E35396D6389}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Homebase.Business</RootNamespace>
+    <AssemblyName>Homebase.Business</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ContainerInitializer.cs" />
+    <Compile Include="Data\DataContextManager.cs" />
+    <Compile Include="Data\Interfaces\IDataContextManager.cs" />
+    <Compile Include="Data\SettingsDataContext.cs" />
+    <Compile Include="Infrastructure\BackgroundTaskRegistrar.cs" />
+    <Compile Include="Infrastructure\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Infrastructure\Interfaces\IBackgroundTaskRegistrar.cs" />
+    <Compile Include="Infrastructure\Interfaces\ISoapApiClient.cs" />
+    <Compile Include="Infrastructure\StorageHelper.cs" />
+    <Compile Include="Infrastructure\SoapApiClient.cs" />
+    <Compile Include="Model\Action.cs" />
+    <Compile Include="Model\ActionArgument.cs" />
+    <Compile Include="Model\ActionLog.cs" />
+    <Compile Include="Model\ActionTrigger.cs" />
+    <Compile Include="Model\ActionToExecute.cs" />
+    <Compile Include="Model\ActionType.cs" />
+    <Compile Include="Model\ApiClientRequest.cs" />
+    <Compile Include="Model\ActionDescription.cs" />
+    <Compile Include="Model\ConnectDeviceRequest.cs" />
+    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\Device.cs" />
+    <Compile Include="Model\DeviceCapability.cs" />
+    <Compile Include="Model\DeviceType.cs" />
+    <Compile Include="Model\ExceptionLog.cs" />
+    <Compile Include="Model\FailedActionLog.cs" />
+    <Compile Include="Model\Log.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Fifthplay\FifthplayRepository.cs" />
+    <Compile Include="Repositories\Fifthplay\Interfaces\IFifthplayRepository.cs" />
+    <Compile Include="Repositories\Ifttt\IftttRepository.cs" />
+    <Compile Include="Repositories\Ifttt\Interfaces\IIftttRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\Settings\ActionRepository.cs" />
+    <Compile Include="Repositories\Settings\ActionTypeRepository.cs" />
+    <Compile Include="Repositories\Settings\ApplicationRepository.cs" />
+    <Compile Include="Repositories\Settings\CredentialsRepository.cs" />
+    <Compile Include="Repositories\Settings\DeviceRepository.cs" />
+    <Compile Include="Repositories\Settings\Interfaces\IActionRepository.cs" />
+    <Compile Include="Repositories\Settings\Interfaces\IActionTypeRepository.cs" />
+    <Compile Include="Repositories\Settings\Interfaces\IApplicationRepository.cs" />
+    <Compile Include="Repositories\Settings\Interfaces\ICredentialsRepository.cs" />
+    <Compile Include="Repositories\Settings\Interfaces\IDeviceRepository.cs" />
+    <Compile Include="Repositories\Settings\Interfaces\ILogRepository.cs" />
+    <Compile Include="Repositories\Settings\LogRepository.cs" />
+    <Compile Include="Repositories\System\Interfaces\ILocationRepository.cs" />
+    <Compile Include="Repositories\System\Interfaces\IPermissionRepository.cs" />
+    <Compile Include="Repositories\System\LocationRepository.cs" />
+    <Compile Include="Repositories\System\PermissionRepository.cs" />
+    <Compile Include="Services\ActionExecutor.cs" />
+    <Compile Include="Services\ActionUpdater.cs" />
+    <Compile Include="Services\FifthplayDeviceConnector.cs" />
+    <Compile Include="Services\FirstTimeUserExperienceTracker.cs" />
+    <Compile Include="Services\FunctionalityToggler.cs" />
+    <Compile Include="Services\HomeLocationUpdater.cs" />
+    <Compile Include="Services\IftttConnector.cs" />
+    <Compile Include="Services\Interfaces\IActionExecutor.cs" />
+    <Compile Include="Services\Interfaces\IActionUpdater.cs" />
+    <Compile Include="Services\Interfaces\IDeviceConnector.cs" />
+    <Compile Include="Services\Interfaces\IFirstTimeUserExperienceTracker.cs" />
+    <Compile Include="Services\Interfaces\IFunctionalityToggler.cs" />
+    <Compile Include="Services\Interfaces\IHomeLocationUpdater.cs" />
+    <Compile Include="Services\Interfaces\IIftttConnector.cs" />
+    <Compile Include="Services\Interfaces\ILogger.cs" />
+    <Compile Include="Services\Logger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.2.0.37227, Culture=neutral, PublicKeyToken=2d6752c4fdf70b88, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

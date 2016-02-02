@@ -1,0 +1,93 @@
+﻿<pages:PageBase
+    x:Class="Homebase.Phone.Pages.TasksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Homebase.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:Homebase.Phone.Pages"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Tasks}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="HOMEBASED" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="tasks" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray">This shows the actions that will be triggered when you arrive or leave home.</TextBlock>
+            <TextBlock Grid.Row="1" Margin="0,19,0,0" Style="{StaticResource BodyTextBlockStyle}" Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVisibility}}"
+                        >You have not added any actions.</TextBlock>
+
+            <ListView Grid.Row="2" Margin="0,19,0,0"
+                    ItemsSource="{Binding Actions}"
+                    IsItemClickEnabled="True"
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True"
+                    ItemClick="ListView_ItemClick">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,0,0,9.5" Holding="TaskHolding">
+                            <FlyoutBase.AttachedFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Delete" Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding}" />
+                                </MenuFlyout>
+                            </FlyoutBase.AttachedFlyout>
+
+
+                            <TextBlock
+                                    Text="{Binding DeviceName}"
+                                    TextWrapping="Wrap"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Style="{ThemeResource ListViewItemTextBlockStyle}"
+                                    Margin="0,0,19,0"/>
+                            <TextBlock
+                                    Text="{Binding ActionTrigger}"
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"
+                                    Margin="0,0,19,0"/>
+                            <TextBlock
+                                    Text="{Binding Result}"
+                                    TextWrapping="WrapWholeWords"
+                                    Pivot.SlideInAnimationGroup="2" 
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
+                                    Style="{ThemeResource ListViewItemContentTextBlockStyle}"
+                                    Margin="0,0,19,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="add" Icon="Add" Click="AddTapped"></AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+</pages:PageBase>
