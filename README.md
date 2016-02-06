@@ -1,6 +1,8 @@
 
-Homebased come home in style
-============================
+Homebased
+=========
+come home in style
+------------------
 
 Homebased performs tasks when you arrive or leave home. It uses your location and connects to the Internet of Things to accomplish its goal.
 
